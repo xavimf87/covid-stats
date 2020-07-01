@@ -6,13 +6,11 @@ Fuente de datos: [John Hopkins](https://coronavirus.jhu.edu/map.html)
 
 ### Instalación
 
-1. `git clone git://github.com/xavimf87/covid-stats`
+1. `git clone git://github.com/xavimf87/covid-stats && cd covid-stats`
 
-2. `cd covid-stats`
+2. `sudo docker-compose up -d`
 
-3. `sudo docker-compose up -d`
-
-4. `http://IP:5000`
+4. `http://127.0.0.1:5000`
 
 
 
