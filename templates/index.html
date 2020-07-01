@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="container mtop5">
+    <h3>Internacional</h3>
+    <h6 class="subtitle">Fuente: <a target="_blank" href="https://systems.jhu.edu/">John
+            Hopkins</a> | Última actualización de los datos: {{ last_update }}</h6>
+    <hr>
+    <div class="row">
+        <div class="col-sm">
+            <div class="card card-muertes">
+                <div class=" card-body">
+                    <h5 class="card-title">Muertes</h5>
+                    <h6 class="card-subtitle mb-2">Total casos en el mundo</h6>
+                    <h3 class="card-text">{{ deaths_total }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card card-confirmados">
+                <div class="card-body">
+                    <h5 class="card-title">Confirmados</h5>
+                    <h6 class="card-subtitle mb-2">Total casos en el mundo</h6>
+                    <h3 class="card-text">{{ confirmed_total }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card card-recuperados">
+                <div class=" card-body">
+                    <h5 class="card-title">Recuperados</h5>
+                    <h6 class="card-subtitle mb-2">Total casos en el mundo</h6>
+                    <h3 class="card-text">{{ recovered_total }}</h3>
+
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        
+        <div class="second-row mtop3">
+            <h3>España</h3>
+            <h6 class="subtitle">Fuente: <a target="_blank" href="https://systems.jhu.edu/">John
+                    Hopkins</a> | Última actualización de los datos: {{ last_update }}</h6>
+            <hr>
+            <div class="row">
+                <!-- Muertos-->
+                <div class="col-sm">
+                    <div class="card card-muertes">
+                        <div class=" card-body">
+                            <h5 class="card-title">Muertes</h5>
+                            <h6 class="card-subtitle mb-2">Total casos en España</h6>
+                            <h3 class="card-text">{{ deaths_spain }}</h3>
+                        </div>
+                    </div>
+                </div>    
+                <div class="col-sm">
+                    <!-- Confirmados-->
+                    <div class="card card-confirmados">
+                        <div class="card-body">
+                            <h5 class="card-title">Confirmados</h5>
+                            <h6 class="card-subtitle mb-2">Total casos en España</h6>
+                            <h3 class="card-text">{{ confirmed_spain }}</h3>
+                        </div>
+                    </div>
+                </div>    
+                <div class="col-sm">
+                    <div class="card card-recuperados">
+                        <div class=" card-body">
+                            <h5 class="card-title">Recuperados</h5>
+                            <h6 class="card-subtitle mb-2">Total casos en España</h6>
+                            <h3 class="card-text">{{ recovered_spain }}</h3>
+                        </div>
+                    </div>
+                </div>    
+            </div>     
+        </div> 
+        <div class="mtop3">
+            <h3>Países</h3>
+            <h6 class="subtitle">Fuente: <a target="_blank" href="https://systems.jhu.edu/">John
+                    Hopkins</a> | Última actualización de los datos: {{ last_update }}</h6>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="tabla-totalcasos" class="table-condensed table table-list-search">
+                        <thead class="table-secondary">
+        
+                            <tr>
+                                <th>País</th>
+                                <th>Muertes</th>
+                                <th>Confirmados</th>
+                                <th>Recuperados</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for key,value in country_df.iterrows() %}
+                            <tr>
+                                <td>{{value.country_region}}</td>
+                                <td>{{"{0:,}".format(value.deaths).replace('.0','')}}</td>
+                                <td>{{"{0:,}".format(value.confirmed).replace('.0','')}}</td>
+                                <td>{{"{0:,}".format(value.recovered).replace('.0','')}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+        
+                </div>
+            </div>
+        </div>
+        
+        
+        <script type="application/javascript">
+            'use strict';
+            var $ = jQuery;
+            $.getScript("{{ url_for('static',filename='js/datatables.min.js') }}", function () {
+                $.fn.dataTable.ext.classes.sPageButton = 'btn btn-secondary btn-sm margin'; 
+                $.fn.dataTable.ext.classes.sPageButtonActive = 'black';
+                $.fn.dataTable.ext.classes.sPagePrevDisabled = 'disabled';
+                $('#tabla-totalcasos').DataTable({
+                    "language": {
+                        "paginate": {
+                            "previous": "Anterior",
+                            "next": "Siguiente"
+                        }
+                    },
+                    "paging": false,
+                    "pageLength": 20,
+                    "ordering": true,
+                    "order": [[1, "desc"]],
+                    "info": false,
+                    "fixedHeader": { headerOffset: 48 },
+                    "bFilter": false
+                });
+            });
+        </script>
+
+    {% endblock %}
