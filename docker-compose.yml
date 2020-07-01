@@ -2,7 +2,7 @@ version: '3'
 
 services:
  covid_app:
-  build: ./
+  build: ./covid-stats
   restart: always
   ports:
    - '5000:5000'
