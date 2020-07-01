@@ -6,7 +6,7 @@ Fuente de datos: [John Hopkins](https://coronavirus.jhu.edu/map.html)
 
 ### Instalación
 
-1. `git clone git@github.com:xavimf87/covid-stats.git`
+1. `git clone git://github.com/xavimf87/covid-stats`
 
 2. `cd covid-stats`
 
