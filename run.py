@@ -36,13 +36,6 @@ def index():
     recovered_spain = int(spain_df['recovered'].sum())
     active_spain = int(spain_df['active'].sum())
 
-
-
-    # ministerio data
-    comunidades_df = pd.read_csv(
-        'https://cnecovid.isciii.es/covid19/resources/datos_ccaas.csv')
-
-
     return render_template('index.html',
                            confirmed_total=formatnum(confirmed_total),
                            deaths_total=formatnum(deaths_total),
