@@ -3,6 +3,7 @@ Página Web básica para visualizar los casos de Covid-19 en el mundo usando Fla
 
 Fuente de datos: [John Hopkins](https://coronavirus.jhu.edu/map.html)
 
+[Visitar Covid-stats en Heroku](https://covidstatss.herokuapp.com/)
 
 ### Instalación
 
@@ -11,6 +12,8 @@ Fuente de datos: [John Hopkins](https://coronavirus.jhu.edu/map.html)
 2. `docker-compose up -d`
 
 4. `http://127.0.0.1:5000`
+
+
 
 
 
