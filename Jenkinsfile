@@ -7,9 +7,9 @@ pipeline {
       }
     }
 
-    stage('Install Pip Packages') {
+    stage('Git clone') {
       steps {
-        sh 'pip install -r requirements.txt'
+        git(url: 'https://github.com/xavimf87/covid-stats.git', branch: 'master')
       }
     }
 
