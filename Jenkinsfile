@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Building...${ACTUAL_BRANCH}"  
+                echo "Building..${ACTUAL_BRANCH}"  
                 sh "pip3 install  -r requirements.txt"
             }
         }
